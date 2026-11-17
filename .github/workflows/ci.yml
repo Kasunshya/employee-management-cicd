@@ -29,6 +29,13 @@ jobs:
       - name: Build and run tests
         run: mvn --batch-mode clean verify
 
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: employee-management-jar
+          path: target/employee-management-0.0.1-SNAPSHOT.jar
+
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v7
@@ -36,3 +43,4 @@ jobs:
           name: junit-test-reports
           path: target/surefire-reports/
           if-no-files-found: ignore
+
